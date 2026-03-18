@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enilson Etienne · Dev & Réseaux</title>
+    <!-- Google Fonts & Font Awesome pour une touche pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafc;
+            color: #1e1f2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* palette technique / hacking — nuances de bleu profond, verts sombres et touches néon */
+        :root {
+            --bg-dark: #0b0e14;
+            --bg-card: #141a24;
+            --primary: #00e0b2;
+            --primary-dim: #00a389;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a855f7;
+            --text-light: #edf2f7;
+            --text-dim: #a0afc0;
+            --border-glow: rgba(0, 224, 178, 0.3);
+        }
+
+        /* en-tête et navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(11, 14, 20, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 50;
+            border-bottom: 1px solid #2a3346;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00e0b2, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #edf2f7;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* sections générales */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(145deg, #f0f4fa, #cbd5e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-blue));
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            padding-top: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(to right, #ffffff, #b0f3e6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .description {
+            font-size: 1.2rem;
+            color: #b7c9e2;
+            max-width: 550px;
+            margin-bottom: 2rem;
+            background: rgba(20, 26, 36, 0.5);
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            border-left: 4px solid var(--primary);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-label {
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-avatar {
+            position: relative;
+        }
+        .avatar-glow {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at 30% 30%, #00e0b2, #0f2a44);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(0,224,178,0.5);
+        }
+        .avatar-glow i {
+            font-size: 9rem;
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 0 20px cyan;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        }
+
+        /* Cartes compétences / expertise */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--bg-card);
+            padding: 2rem 1.8rem;
+            border-radius: 28px;
+            border: 1px solid #2d3a4e;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.6);
+        }
+        .expertise-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 30px -10px #00e0b240;
+        }
+
+        .expertise-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .expertise-card p, .expertise-tags {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .tag {
+            background: #1f2b39;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #cbd5e1;
+            border: 1px solid #354357;
+        }
+
+        /* hacking card spécifique */
+        .hacking-level {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+        .skull-badge {
+            background: #a855f7;
+            color: #0b0e14;
+            font-weight: 700;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* projet */
+        .project-showcase {
+            background: linear-gradient(145deg, #0f172a, #0b111e);
+            border-radius: 40px;
+            padding: 3rem;
+            margin: 3rem 0 2rem;
+            border: 1px solid #2b3b54;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .project-info h3 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .project-info .highlight {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        .meta-item i {
+            color: var(--primary);
+            margin-right: 8px;
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+        .project-illu {
+            background: #14202e;
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #2e425b;
+            box-shadow: 0 0 30px #00e0b220;
+        }
+        .project-illu i {
+            font-size: 6rem;
+            color: #00e0b2;
+            filter: drop-shadow(0 0 12px #3b82f6);
+        }
+        .project-illu p {
+            font-family: 'Courier New', monospace;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+
+        /* section étudiant talentueux */
+        .student-banner {
+            display: flex;
+            flex-wrap: wrap;
+            background: #0d1420;
+            border-radius: 48px;
+            padding: 3rem;
+            gap: 2.5rem;
+            border: 1px solid #28344a;
+            background-image: radial-gradient(circle at 70% 30%, #132237 0%, #0a101a 90%);
+        }
+        .student-quote {
+            flex: 2;
+            min-width: 280px;
+        }
+        .student-quote i {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+        .student-quote p {
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #d1e0f0;
+        }
+        .student-quote .author {
+            margin-top: 2rem;
+            color: var(--primary-dim);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        .student-achievements {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .achievement {
+            background: #1f2b3b;
+            border-radius: 40px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border: 1px solid #354e6b;
+            color: white;
+            box-shadow: 0 0 15px #00a38930;
+        }
+        .achievement i {
+            color: #fbbf24;
+            margin-right: 12px;
+        }
+
+        /* contact / footer */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0 2rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #1d293b;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: 1px solid #3e506a;
+            transition: 0.2s;
+            color: white;
+            text-decoration: none;
+        }
+        .contact-item:hover {
+            border-color: var(--primary);
+            background: #253141;
+            transform: scale(1.02);
+        }
+        .contact-item i {
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #5f738c;
+            margin-top: 4rem;
+            border-top: 1px solid #1f2a36;
+            padding-top: 2rem;
+        }
+
+        /* responsive */
+        @media (max-width: 850px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-content .description { margin-left: auto; margin-right: auto; }
+            .hero-stats { justify-content: center; }
+            .project-grid { grid-template-columns: 1fr; }
+            .navbar { flex-direction: column; gap: 1rem; }
+            .nav-links { gap: 1.5rem; }
+            .section-title::after { margin-left: auto; margin-right: auto; width: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- navigation one page -->
+    <nav class="navbar">
+        <div class="logo">Enilson<span>.E</span></div>
+        <div class="nav-links">
+            <a href="#accueil">Accueil</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#projet">Projet</a>
+            <a href="#etudiant">Étudiant</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO (accueil) -->
+    <section id="accueil">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Enilson Etienne</h1>
+                <div class="tagline">Développeur · Réseaux · Éthique Hacker</div>
+                <p class="description">
+                    <i class="fas fa-shield-alt" style="margin-right: 10px; color: #00e0b2;"></i>
+                    Master en ingénierie réseau, spécialiste cybersécurité, et développeur full‑stack. 
+                    Je transforme la complexité technique en solutions robustes.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">+7</span>
+                        <span class="stat-label">ans d'expérience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">projets sécurité</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">certifications</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-avatar">
+                <div class="avatar-glow">
+                    <i class="fas fa-user-ninja"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE (dev, réseaux, hacking) -->
+    <section id="expertise">
+        <h2 class="section-title">↳ domaines de maîtrise</h2>
+        <div class="expertise-grid">
+            <!-- développement -->
+            <div class="expertise-card">
+                <div class="expertise-icon"><i class="fas fa-code"></i></div>
+                <h3>Développeur</h3>
+                <p>Full‑stack & bas niveau : applications sécurisées, scripts d’automatisation, back-end robuste.</p>
+                <div class="expertise-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">C / C++</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Rust</span>
+                </div>
+            </div>
+            <!-- réseaux -->
+            <div class="expertise-card">
+                <div class="expertise-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>Maître Réseaux</h3>
+                <p>Architecture, déploiement, durcissement. Cisco, VLAN, SDN, TCP/IP, IPv6, VPN zero trust.</p>
+                <div class="expertise-tags">
+                    <span class="tag">CCNP</span>
+                    <span class="tag">Juniper</span>
+                    <span class="tag">WireShark</span>
+                    <span class="tag">MPLS</span>
+                    <span class="tag">DNS/DHCP</span>
+                </div>
+            </div>
+            <!-- hacking & cybersécurité -->
+            <div class="expertise-card">
+                <div class="expertise-icon"><i class="fas fa-skull-crossbones"></i></div>
+                <h3>Hacking éthique</h3>
+                <p>Pentest, reverse engineering, forensics, détection d’intrusion. Passionné par la résilience des systèmes.</p>
+                <div class="expertise-tags">
+                    <span class="tag">Kali Linux</span>
+                    <span class="tag">Metasploit</span>
+                    <span class="tag">Burp Suite</span>
+                    <span class="tag">Ida Pro</span>
+                    <span class="tag">OWASP</span>
+                </div>
+                <div class="hacking-level">
+                    <span class="skull-badge"><i class="fas fa-bolt"></i> HTB top 3%</span>
+                    <span class="skull-badge" style="background:#00e0b2; color:black;">OSCP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projet phare (mix réseau + hacking) -->
+    <section id="projet">
+        <h2 class="section-title">↳ projet à la une</h2>
+        <div class="project-showcase">
+            <div class="project-grid">
+                <div class="project-info">
+                    <h3>NIDS · Neural watch</h3>
+                    <p class="highlight"><i class="fas fa-eye"></i> Détection d’intrusion par IA & analyse comportementale</p>
+                    <p style="color:#a5b9d4; margin: 1rem 0;">Système hybride qui combine surveillance réseau temps réel et honeypots intelligents. Développé en Rust et Python, déployé sur environnements hétérogènes.</p>
+                    <div class="project-meta">
+                        <div class="meta-item"><i class="fas fa-shield-halved"></i> 99.6% précision</div>
+                        <div class="meta-item"><i class="fas fa-diagram-project"></i> 10k paquets/s</div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tag">Rust</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">DPDK</span>
+                        <span class="tag">Kafka</span>
+                        <span class="tag">ELK</span>
+                    </div>
+                </div>
+                <div class="project-illu">
+                    <i class="fas fa-brain"></i>
+                    <i class="fas fa-shield" style="font-size: 3rem; display: block; margin-top: 1rem; color:#3b82f6;"></i>
+                    <p>analyse prédictive · zero-day detection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section Étudiant très talentueux -->
+    <section id="etudiant">
+        <h2 class="section-title">↳ étudiant d'exception</h2>
+        <div class="student-banner">
+            <div class="student-quote">
+                <i class="fas fa-quote-right"></i>
+                <p>“Enilson fait partie de ces profils rares : une intuition technique hors norme, une curiosité sans limite et déjà un niveau de chercheur en cybersécurité.”</p>
+                <div class="author">— Pr. Hélène Vasseur, directrice du labo Cyber@Polytech</div>
+            </div>
+            <div class="student-achievements">
+                <div class="achievement"><i class="fas fa-trophy"></i> 1er prix · Hackathon DefCon 2024</div>
+                <div class="achievement"><i class="fas fa-certificate"></i> Bourse d’excellence · Talents du numérique</div>
+                <div class="achievement"><i class="fas fa-microchip"></i> Publication sur l'IPv6 security (IETF)</div>
+                <div class="achievement"><i class="fas fa-graduation-cap"></i> Major de promo · Master Réseaux & Sécurité</div>
+            </div>
+        </div>
+        <!-- petit extra "talentueux" -->
+        <div style="margin-top: 2rem; display: flex; justify-content: flex-end; color: var(--text-dim);">
+            <span style="background: #17212b; padding: 0.5rem 1.5rem; border-radius: 60px;"><i class="far fa-star" style="color: gold;"></i>  reconnu pour sa créativité technique et son éthique</span>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <section id="contact" style="padding-bottom: 3rem;">
+        <h2 class="section-title">↳ connectons-nous</h2>
+        <div class="contact-links">
+            <a href="#" class="contact-item"><i class="fab fa-github"></i> github.com/enilsonsec</a>
+            <a href="#" class="contact-item"><i class="fab fa-linkedin-in"></i> linkedin.com/in/enilsonet</a>
+            <a href="#" class="contact-item"><i class="fas fa-envelope"></i> e.etienne@secdev.pro</a>
+            <a href="#" class="contact-item"><i class="fas fa-lock"></i> PGP key</a>
+        </div>
+        <div class="copyright">
+            © 2025 Enilson Etienne — made with <i class="fas fa-terminal" style="color: var(--primary);"></i> et <i class="fas fa-shield-halved"></i> pour un portfolio one-page.
+        </div>
+    </section>
+
+    <!-- petit effet de scroll fluide (optionnel via CSS déjà) -->
+</body>
+</html>
