@@ -240,6 +240,11 @@
             background: var(--primary-dark); 
             transform: scale(1.02); 
         }
+        .btn-submit:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
         .social-links { 
             display: flex; 
             gap: 1.5rem; 
@@ -323,6 +328,20 @@
             border-radius: 2rem;
             padding: 1.2rem;
             animation: fadeSlide 0.6s 0.3s both;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
         
         /* Responsive */
@@ -428,20 +447,27 @@
                 <h3 style="margin-bottom: 1rem; display: flex; gap: 0.5rem;">
                     <i class="fas fa-paper-plane" style="color:#0a5cff;"></i> Envoyez-moi un message
                 </h3>
-                <form id="contactForm" action="#" method="post">
+                <!-- Formulaire avec FormSubmit.co pour l'envoi d'email -->
+                <form id="contactForm" action="https://formsubmit.co/enilsonetienne04@gmail.com" method="POST">
+                    <!-- Configuration FormSubmit -->
+                    <input type="hidden" name="_subject" value="Nouveau message depuis votre portfolio">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://ledidi04.github.io/contact-success.html">
+                    
                     <div class="form-group">
-                        <input type="text" id="fullname" placeholder="Nom complet" required>
+                        <input type="text" name="name" id="fullname" placeholder="Nom complet" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Adresse email" required>
+                        <input type="email" name="email" id="email" placeholder="Adresse email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" placeholder="Sujet (Collaboration, Mission, Question...)">
+                        <input type="text" name="subject" id="subject" placeholder="Sujet (Collaboration, Mission, Question...)">
                     </div>
                     <div class="form-group">
-                        <textarea id="message" placeholder="Décrivez votre projet ou votre besoin... Je suis prêt à coopérer avec enthousiasme et discipline." required></textarea>
+                        <textarea name="message" id="message" placeholder="Décrivez votre projet ou votre besoin... Je suis prêt à coopérer avec enthousiasme et discipline." required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">
+                    <button type="submit" class="btn-submit" id="submitBtn">
                         <i class="fas fa-comment-dots"></i> Envoyer le message
                     </button>
                     <p id="formFeedback" style="margin-top: 1rem; text-align: center; font-size: 0.9rem;"></p>
@@ -525,13 +551,29 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
         
-        // Formulaire de contact
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('formFeedback').innerHTML = '<i class="fas fa-check-circle"></i> Message envoyé avec succès ! Je vous recontacte rapidement.';
-            document.getElementById('formFeedback').style.color = '#0a5cff';
-            this.reset();
+        // Formulaire de contact avec feedback
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const feedback = document.getElementById('formFeedback');
+        
+        form.addEventListener('submit', function(e) {
+            // Afficher un message de chargement
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span> Envoi en cours...';
+            feedback.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Envoi du message...';
+            feedback.style.color = '#0a5cff';
+            
+            // Le formulaire va être soumis normalement vers FormSubmit
+            // Le message de succès s'affichera après redirection vers la page de succès
+            // Pour éviter la redirection et rester sur la page, on pourrait utiliser fetch,
+            // mais FormSubmit fonctionne mieux avec redirection standard
         });
+        
+        // Gestion du message de succès si on revient sur la page (optionnel)
+        if (window.location.search.includes('success=true')) {
+            feedback.innerHTML = '<i class="fas fa-check-circle"></i> Message envoyé avec succès ! Je vous recontacte rapidement.';
+            feedback.style.color = '#0a5cff';
+        }
     </script>
 </body>
 </html>
