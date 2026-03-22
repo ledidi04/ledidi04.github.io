@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Di-Enilson Etienne ·  Développeur Full-stack</title>
-    <!-- Google Fonts + JetBrains Mono pour look technique -->
+    <title>Di-Enilson Etienne · Élève Ingénieur · Esprit Brillant & Coopératif</title>
+    <!-- Google Fonts + JetBrains Mono pour look technique mais frais -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" href="images/Logo Mockup 088.jpg" type="image/x-icon">
     <style>
-        /* === RESET & VARIABLES === */
+        /* === RESET & VARIABLES : BLANC + BLEU PROFESSIONNEL ÉTUDIANT === */
         * {
             margin: 0;
             padding: 0;
@@ -19,96 +19,147 @@
         }
 
         :root {
-            --bg-deep: #0a0c12;
-            --bg-elevated: #12171f;
-            --bg-card: #1a212b;
-            --primary: #4ade80;
-            --primary-dim: #22c55e;
-            --accent-cyan: #22d3ee;
-            --accent-blue: #3b82f6;
-            --text-light: #f1f5f9;
-            --text-dim: #9ca3af;
-            --border-color: #2d3748;
-            --glow: rgba(74, 222, 128, 0.25);
+            --bg-white: #ffffff;
+            --bg-light-blue: #eef5ff;
+            --bg-card-white: #ffffff;
+            --primary-blue: #0a5cff;
+            --primary-blue-dark: #0044cc;
+            --accent-cyan: #00c2ff;
+            --accent-gold: #ffc107;
+            --text-dark: #0a2540;
+            --text-muted: #2c3e66;
+            --border-light: #dce5f2;
+            --glow-blue: rgba(10, 92, 255, 0.15);
+            --shadow-sm: 0 8px 20px rgba(0, 20, 50, 0.08);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
-            color: #e2e8f0;
+            background: linear-gradient(145deg, #ffffff 0%, #eef2fc 100%);
+            color: var(--text-dark);
             line-height: 1.5;
             scroll-behavior: smooth;
             overflow-x: hidden;
             width: 100%;
         }
 
-        /* === TYPO TECHNIQUE === */
         code, .mono {
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* === NAVBAR === */
+        /* === NAVBAR AVEC MENU HAMBURGER === */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(10, 12, 18, 0.95);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
-            border-bottom: 1px solid #2a3346;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
             width: 100%;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            font-weight: 800;
+            background: linear-gradient(135deg, #0a5cff, #0099ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
+            z-index: 1001;
         }
-        .logo::before {
-            content: '<!-- ';
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            color: #4ade80;
-            opacity: 0.6;
-            margin-right: 4px;
-        }
-        .logo::after {
-            content: ' -->';
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            color: #4ade80;
-            opacity: 0.6;
-            margin-left: 4px;
-        }
+      
 
+        /* Menu desktop */
         .nav-links {
             display: flex;
             gap: 2.2rem;
         }
         .nav-links a {
-            color: #b0b8c5;
+            color: #1e3a6b;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: 0.2s;
             font-size: 0.95rem;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
         }
         .nav-links a:hover {
-            color: #4ade80;
-            border-bottom-color: #4ade80;
+            color: #0a5cff;
+            border-bottom-color: #0a5cff;
         }
 
-        /* === SECTIONS COMMUNES === */
+        /* Bouton hamburger - caché sur desktop */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #0a5cff;
+            cursor: pointer;
+            z-index: 1001;
+            transition: 0.2s;
+        }
+        .menu-toggle:hover {
+            color: #0040cc;
+        }
+
+        /* Menu mobile overlay */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+                border-left: 1px solid var(--border-light);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+            }
+            /* Overlay background */
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(3px);
+                z-index: 999;
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.3s;
+            }
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
         section {
             max-width: 1280px;
             margin: 0 auto;
@@ -118,12 +169,12 @@
 
         .section-title {
             font-size: 2.2rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 3rem;
             display: inline-block;
-            border-left: 6px solid #4ade80;
+            border-left: 6px solid #0a5cff;
             padding-left: 1.2rem;
-            background: linear-gradient(180deg, #f0f9ff, #94a3b8);
+            background: linear-gradient(135deg, #0a2b4e, #1a4c9e);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -138,7 +189,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 3rem;
-            padding-top: 2rem;
+            padding-top: 1rem;
             width: 100%;
         }
         .hero-content {
@@ -146,55 +197,56 @@
         }
         .hero-content h1 {
             font-size: 3.8rem;
-            font-weight: 700;
+            font-weight: 800;
             line-height: 1.1;
-            background: linear-gradient(145deg, #ffffff, #a5f3fc);
+            background: linear-gradient(145deg, #0a2b6e, #0080ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 0.5rem;
         }
         .hero-content .tagline {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: #4ade80;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #0a5cff;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
         .hero-content .tagline i {
-            font-size: 1.8rem;
-            color: #22d3ee;
+            font-size: 1.6rem;
+            color: #0099ff;
         }
         .hero-content .description {
             font-size: 1.15rem;
-            color: #b9c9e0;
+            color: #1f3a6b;
             max-width: 600px;
             margin-bottom: 2rem;
-            background: rgba(26, 33, 43, 0.7);
+            background: rgba(10, 92, 255, 0.05);
             padding: 1.2rem 1.8rem;
-            border-radius: 16px;
-            border-left: 4px solid #4ade80;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 20px rgba(74,222,128,0.1);
+            border-radius: 24px;
+            border-left: 4px solid #0a5cff;
+            backdrop-filter: blur(2px);
+            box-shadow: var(--shadow-sm);
+            font-weight: 500;
         }
 
-        /* Avatar avec image réelle */
         .hero-avatar {
             flex-shrink: 0;
         }
         .hero-avatar .avatar-glow {
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, #1e2b3a, #0f1a24);
-            border-radius: 30% 70% 70% 30% / 30% 55% 45% 70%;
-            animation: morph 12s ease-in-out infinite;
+            background: radial-gradient(circle, #cde5ff, #b0d4ff);
+            border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+            animation: morphStudy 14s ease-in-out infinite;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid #4ade80;
-            box-shadow: 0 0 60px #4ade8030;
+            border: 4px solid white;
+            box-shadow: 0 20px 35px -8px rgba(0, 80, 255, 0.3), 0 0 0 8px rgba(10, 92, 255, 0.1);
             overflow: hidden;
         }
         .avatar-glow img {
@@ -202,13 +254,80 @@
             height: 100%;
             object-fit: cover;
             transform: scale(1.5);
-            object-position: center -30%;
+            object-position: center -25%;
             border-radius: inherit;
         }
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 55% 45% 70%; }
-            50% { border-radius: 60% 40% 40% 60% / 50% 30% 70% 50%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 55% 45% 70%; }
+        @keyframes morphStudy {
+            0% { border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; }
+            50% { border-radius: 60% 40% 30% 70% / 40% 50% 50% 60%; }
+            100% { border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; }
+        }
+
+        .student-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+        .badge-brillant {
+            background: #eef2ff;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a5cff;
+            border: 1px solid #bdd4ff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .badge-brillant i {
+            margin-right: 6px;
+            color: #ffb347;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.8rem;
+        }
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #0a5cff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: none;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(10,92,255,0.3);
+        }
+        .cv-button:hover {
+            background: #0040cc;
+            transform: scale(1.02);
+        }
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #25D366;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: none;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+        }
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: scale(1.02);
         }
 
         /* === EXPERTISE CARDS === */
@@ -219,26 +338,30 @@
             margin-top: 2rem;
         }
         .expertise-card {
-            background: var(--bg-card);
+            background: var(--bg-card-white);
             padding: 2rem 1.8rem;
-            border-radius: 28px;
-            border: 1px solid #334155;
-            transition: 0.2s;
-            box-shadow: 0 10px 25px -10px #000;
+            border-radius: 32px;
+            border: 1px solid var(--border-light);
+            transition: 0.25s ease;
+            box-shadow: var(--shadow-sm);
         }
         .expertise-card:hover {
-            border-color: #4ade80;
-            box-shadow: 0 20px 30px -10px #4ade8020;
+            border-color: #0a5cff;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(10, 92, 255, 0.2);
         }
         .expertise-icon {
             font-size: 2.5rem;
-            color: #4ade80;
+            color: #0a5cff;
             margin-bottom: 1.2rem;
         }
         .expertise-card h3 {
             font-size: 1.7rem;
-            font-weight: 600;
-            color: white;
+            font-weight: 700;
+            color: #0a2b4e;
+        }
+        .expertise-card p {
+            color: #2d4a7c;
         }
         .expertise-tags {
             display: flex;
@@ -247,74 +370,70 @@
             margin-top: 1.5rem;
         }
         .tag {
-            background: #1f2b39;
+            background: #eef3fc;
             padding: 0.3rem 1rem;
             border-radius: 30px;
             font-size: 0.8rem;
             font-family: 'JetBrains Mono', monospace;
-            border: 1px solid #3b4b5e;
+            border: 1px solid #cbdff2;
+            color: #0044aa;
         }
 
         /* === CERTIFICATES GRID === */
         .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 2rem;
             margin: 2.5rem 0;
         }
         .cert-card {
-            background: #10171f;
-            border-radius: 24px;
+            background: #ffffff;
+            border-radius: 28px;
             padding: 1.8rem 1.5rem;
-            border: 1px solid #2a3748;
+            border: 1px solid #e2edff;
             transition: all 0.2s;
             display: flex;
             flex-direction: column;
-            border-left: 5px solid #4ade80;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+            border-left: 6px solid #0a5cff;
+            box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
         }
         .cert-card:hover {
-            transform: translateY(-6px);
-            border-color: #22d3ee;
+            transform: translateY(-5px);
+            border-color: #0a5cff;
+            box-shadow: 0 18px 28px -12px rgba(10,92,255,0.25);
         }
         .cert-card::after {
-            content: "PDF";
+            content: "📘";
             position: absolute;
-            top: 10px;
-            right: -25px;
-            background: #4ade80;
-            color: #0a0c12;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: bold;
-            padding: 0.2rem 2rem;
-            transform: rotate(45deg);
-            opacity: 0.9;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 8px black;
+            top: 12px;
+            right: 12px;
+            background: #ffffffcc;
+            font-size: 1.4rem;
+            opacity: 0.7;
         }
         .cert-icon {
             font-size: 2.2rem;
-            color: #4ade80;
+            color: #0a5cff;
             margin-bottom: 1rem;
         }
         .cert-title {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.3rem;
-            color: white;
+            color: #0a2b4e;
             margin-bottom: 0.3rem;
             padding-right: 2rem;
         }
         .cert-org {
-            color: #22d3ee;
+            color: #0a5cff;
             font-size: 0.9rem;
             margin-bottom: 0.6rem;
             font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
         }
         .cert-date {
-            color: var(--text-dim);
+            color: #4a6f9e;
             font-size: 0.85rem;
             margin-bottom: 1rem;
         }
@@ -325,56 +444,57 @@
             margin: 0.8rem 0 1rem;
         }
         .skill-tag {
-            background: #253241;
+            background: #eef3ff;
             padding: 0.2rem 0.7rem;
-            border-radius: 16px;
+            border-radius: 20px;
             font-size: 0.7rem;
             font-family: 'JetBrains Mono', monospace;
-            color: #b9d0f0;
+            color: #0a4cbf;
         }
         .cert-download {
             margin-top: auto;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #4ade80;
+            color: #0a5cff;
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            border: 1px solid #4ade8030;
+            border: 1px solid #b9d0ff;
             padding: 0.4rem 1rem;
             border-radius: 30px;
             width: fit-content;
             transition: 0.2s;
+            background: #f8fbff;
         }
         .cert-download:hover {
-            background: #4ade80;
-            color: #0a0c12;
-            border-color: #4ade80;
-        }
-        .cert-download i {
-            font-size: 0.9rem;
+            background: #0a5cff;
+            color: white;
+            border-color: #0a5cff;
         }
 
-        /* === BOUTON CV === */
-        .cv-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            background: #1a232f;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            border: 1px solid #4ade80;
-            color: white;
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            transition: 0.2s;
+        .see-all-certificates {
+            text-align: center;
             margin-top: 2rem;
         }
-        .cv-button:hover {
-            background: #4ade80;
-            color: #0a0c12;
-            border-color: #4ade80;
+        .btn-see-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: transparent;
+            border: 2px solid #0a5cff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            color: #0a5cff;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            transition: 0.2s;
+        }
+        .btn-see-all:hover {
+            background: #0a5cff;
+            color: white;
+            transform: scale(1.02);
         }
 
         /* === PROJETS === */
@@ -385,39 +505,41 @@
             margin-top: 2rem;
         }
         .project-card {
-            background: #1a232f;
+            background: #ffffff;
             border-radius: 32px;
-            padding: 2rem 1.5rem;
-            border: 1px solid #3f4e64;
+            padding: 2rem 1.8rem;
+            border: 1px solid #e2edff;
             transition: 0.2s;
+            box-shadow: var(--shadow-sm);
         }
         .project-card:hover {
-            border-color: #4ade80;
-            background: #1d2a39;
+            border-color: #0a5cff;
+            background: #fafcff;
+            transform: translateY(-4px);
         }
         .project-icon {
             font-size: 2.5rem;
-            color: #4ade80;
+            color: #0a5cff;
             margin-bottom: 1.2rem;
         }
         .project-card h3 {
             font-size: 1.8rem;
-            font-weight: 600;
-            color: white;
+            font-weight: 700;
+            color: #0a2b4e;
             margin-bottom: 0.8rem;
         }
         .project-card p {
-            color: #b0c8e0;
+            color: #2f527c;
             margin-bottom: 1.5rem;
         }
 
         /* === CONTACT === */
         .contact-section {
-            background: #0e141c;
+            background: white;
             border-radius: 48px;
-            padding: 3.5rem 2.5rem;
-            border: 1px solid #334155;
-            box-shadow: inset 0 0 20px #00000060, 0 20px 30px -10px #000;
+            padding: 3rem 2.5rem;
+            border: 1px solid #deeaff;
+            box-shadow: 0 15px 35px -10px rgba(10, 92, 255, 0.1);
         }
         .contact-grid {
             display: grid;
@@ -426,47 +548,44 @@
             margin-bottom: 2rem;
         }
         .contact-card {
-            background: #1a232f;
+            background: #f8fcff;
             border-radius: 32px;
             padding: 2rem 1.5rem;
-            border: 1px solid #3f4e64;
+            border: 1px solid #dcebff;
             transition: 0.15s;
         }
         .contact-card:hover {
-            border-color: #4ade80;
-            background: #1d2a39;
+            border-color: #0a5cff;
+            background: #ffffff;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.05);
         }
         .contact-card i {
             font-size: 2rem;
-            color: #4ade80;
+            color: #0a5cff;
             margin-bottom: 1.2rem;
         }
         .contact-card .contact-type {
-            color: #9ab0d0;
+            color: #2c6280;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
         }
         .contact-card a, .contact-card .contact-value {
             display: block;
-            color: white;
-            font-size: 1.2rem;
+            color: #0a2540;
+            font-size: 1.1rem;
             font-weight: 500;
             margin: 0.5rem 0 0.2rem;
             text-decoration: none;
             word-break: break-word;
         }
-        .contact-card .contact-value.mono {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            color: #22d3ee;
-        }
 
-        /* === FOOTER AMÉLIORÉ === */
+        /* === FOOTER === */
         .footer {
-            background: #0e141c;
-            border-top: 1px solid #1f2e3a;
+            background: #f0f5fe;
+            border-top: 1px solid #cde0fc;
             padding: 3rem 2rem 1.5rem;
             margin-top: 5rem;
             width: 100%;
@@ -487,348 +606,403 @@
             justify-content: center;
         }
         .footer-links a {
-            color: #9ab0d0;
+            color: #1e4982;
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
             transition: 0.2s;
+            font-weight: 500;
         }
         .footer-links a:hover {
-            color: #4ade80;
+            color: #0a5cff;
         }
         .footer-copyright {
             text-align: center;
-            color: #5a6e84;
+            color: #456e9e;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             max-width: 1280px;
             margin: 2rem auto 0;
             padding-top: 1.5rem;
-            border-top: 1px solid #1f2e3a;
+            border-top: 1px solid #cde0fc;
         }
 
-        /* === RESPONSIVE AMÉLIORÉ === */
+        .coop-message {
+            background: #e9f2ff;
+            border-radius: 32px;
+            padding: 1.2rem 1.8rem;
+            margin-top: 2rem;
+            text-align: center;
+            border: 1px solid #bbd6ff;
+            font-weight: 600;
+            color: #004eac;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 1rem;
+        }
+        .coop-message i {
+            font-size: 1.5rem;
+            color: #0a5cff;
+        }
+
+        /* === BACK TO TOP BUTTON === */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #0a5cff;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            border: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background: #0040cc;
+            transform: scale(1.1);
+        }
+
+        /* === RESPONSIVE === */
         @media (max-width: 900px) {
             .hero {
-                flex-direction: column-reverse; /* Inverse l'ordre : image d'abord */
+                flex-direction: column-reverse;
                 text-align: center;
             }
-            
-            .hero-content .description {
-                text-align: left;
-            }
-            
             .hero-avatar .avatar-glow {
                 width: 250px;
                 height: 250px;
             }
-            
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
             .footer-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 1.5rem;
+            }
+            .button-group {
+                justify-content: center;
+            }
+            .hero-content .description {
+                text-align: left;
             }
         }
-
         @media (max-width: 600px) {
             section {
                 padding: 3rem 1rem;
             }
-            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
             .hero-content .tagline {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
-            
             .section-title {
                 font-size: 1.8rem;
             }
-            
             .contact-section {
                 padding: 2rem 1rem;
-                border-radius: 32px;
             }
-            
-            .footer-links {
-                gap: 1rem;
+            .navbar {
+                padding: 0.8rem 1rem;
             }
-            
-            .footer-links a {
-                font-size: 0.8rem;
-            }
-            
             .logo {
                 font-size: 1.4rem;
             }
-            
             .logo::before, .logo::after {
                 font-size: 0.8rem;
-            }
-        }
-
-        /* Petit correctif pour très petits écrans */
-        @media (max-width: 380px) {
-            .hero-avatar .avatar-glow {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .contact-card a {
-                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER AVEC MENU HAMBURGER ===== -->
     <nav class="navbar">
         <div class="logo">Enilson Etienne</div>
-        <div class="nav-links">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
             <a href="#accueil">Accueil</a>
-            <a href="#expertise">Expertise</a>
-            <a href="#certificats">Certificats</a>
-            <a href="#projets">Projets</a>
-            <a href="#contact">Contact</a>
+            <a href="expertise.html">Expertise</a>
+            <a href="certificats.html">Certificats</a>
+            <a href="projets.html">Projets</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- ===== ACCUEIL ===== -->
     <section id="accueil">
         <div class="hero">
             <div class="hero-content">
-                <h1>Enilson Etienne</h1>
+                <h1>Di-Enilson Etienne</h1>
                 <div class="tagline">
-                    <i class="fas fa-terminal"></i> dev · réseau · hacking éthique
+                    <i class="fas fa-graduation-cap"></i>  Développeur full-stack
                 </div>
                 <p class="description">
-                    <i class="fas fa-shield" style="margin-right: 8px;"></i>
-                    Maitre en cybersécurité, Développeur full-stack, et passionné d'architecture réseau. 
-                    Je construis des systèmes résilients avec une approche offensive / défensive.
+                    <i class="fas fa-star-of-life" style="margin-right: 8px; color:#ffaa33;"></i>
+                     brillant, discipline exemplaire, travailleur acharné et prêt à coopérer sur des projets d'envergure. 
+                    Spécialisé en développement sécurisé, réseaux et hacking éthique avec une soif d'apprendre et d'innover.
                 </p>
-                <div style="display: flex; gap: 1.5rem; color: #9ab0d0; flex-wrap: wrap;">
-                    <span><i class="fas fa-check-circle" style="color:#4ade80;"></i>  Développeur </span>
-                    <span><i class="fas fa-check-circle" style="color:#4ade80;"></i>  Pentesteur</span>
+                <div class="student-badges">
+                    <span class="badge-brillant"><i class="fas fa-brain"></i> BRILLANT</span>
+                    <span class="badge-brillant"><i class="fas fa-chalkboard-user"></i> DISCIPLINE ACADÉMIQUE</span>
+                    <span class="badge-brillant"><i class="fas fa-briefcase"></i> TRAVAILLEUR</span>
+                    <span class="badge-brillant"><i class="fas fa-handshake"></i> PRÊT À COOPÉRER</span>
+                    <span class="badge-brillant"><i class="fas fa-lightbulb"></i> ESPRIT D'ÉQUIPE</span>
                 </div>
-                <!-- BOUTON CV AJOUTÉ -->
-                <a href="cv/CV Enilson.pdf" class="cv-button" download>
-                    <i class="fas fa-file-pdf"></i> Télécharger mon CV (PDF)
-                </a>
+                <div class="button-group">
+                    <a href="cv/CV Enilson.pdf" class="cv-button" download>
+                        <i class="fas fa-file-pdf"></i> Télécharger mon CV
+                    </a>
+                    <a href="https://wa.me/50942682839" class="whatsapp-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contactez-moi
+                    </a>
+                </div>
             </div>
             <div class="hero-avatar">
                 <div class="avatar-glow">
-                    <!-- IMAGE AJOUTÉE -->
                     <img src="images/image.jpeg" alt="Enilson Etienne">
                 </div>
             </div>
+        </div>
+        <div class="coop-message">
+            <i class="fas fa-users"></i> « Disponible pour collaborer, co-développer et sécuriser vos infrastructures avec rigueur et passion »
+            <i class="fas fa-hand-peace"></i>
         </div>
     </section>
 
     <!-- ===== EXPERTISE ===== -->
     <section id="expertise">
-        <h2 class="section-title"># domaines de maîtrise</h2>
+        <h2 class="section-title"># domaines de maîtrise · étudiant expert</h2>
         <div class="expertise-grid">
             <div class="expertise-card">
-                <div class="expertise-icon"><i class="fas fa-code"></i></div>
-                <h3>Développeur</h3>
-                <p>Python, Java, Php, C, Node.js · automatisation, tooling sécurisé, backend.</p>
+                <div class="expertise-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Développeur Fullstack</h3>
+                <p>Python, Java, PHP, Node.js, React — conception d'applications robustes et sécurisées.</p>
                 <div class="expertise-tags">
                     <span class="tag">Python</span><span class="tag">Java</span><span class="tag">Node.js</span><span class="tag">React</span>
                 </div>
             </div>
             <div class="expertise-card">
                 <div class="expertise-icon"><i class="fas fa-network-wired"></i></div>
-                <h3>Maître Réseaux</h3>
-                <p>CCNP, SDN, WireShark, MPLS, durcissement, architecture zero-trust.</p>
+                <h3>Architecture réseau</h3>
+                <p>CCNP en cours, segmentation, durcissement, protocoles avancés, approche zero-trust.</p>
                 <div class="expertise-tags">
-                    <span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">Juniper</span><span class="tag">IPv6</span>
+                    <span class="tag">TCP/IP</span><span class="tag">VLAN/MPLS</span><span class="tag">Juniper</span><span class="tag">Wireshark</span>
                 </div>
             </div>
             <div class="expertise-card">
-                <div class="expertise-icon"><i class="fas fa-skull-crossbones"></i></div>
+                <div class="expertise-icon"><i class="fas fa-user-secret"></i></div>
                 <h3>Hacking éthique</h3>
-                <p>Pentest, reverse, forensics · Kali, Burp, Metasploit, IDA.</p>
+                <p>Pentest, analyse de vulnérabilités, Metasploit, Burp Suite, Kali Linux — éthique et discipline.</p>
                 <div class="expertise-tags">
-                    <span class="tag">OSCP (in progress)</span><span class="tag">HTB top 3%</span><span class="tag">Kali</span>
+                    <span class="tag">OSCP (prep)</span><span class="tag">HTB top 4%</span><span class="tag">Kali</span>
                 </div>
             </div>
+        </div>
+        <div class="see-all-certificates">
+            <a href="expertise.html" class="btn-see-all">
+                <i class="fas fa-trophy"></i> Voir tous Mes Domaines D'Expertisme
+            </a>
         </div>
     </section>
 
     <!-- ===== CERTIFICATS ===== -->
     <section id="certificats">
-        <h2 class="section-title"># certifications & achievements</h2>
+        <h2 class="section-title"># certifications & parcours brillant</h2>
         <div class="certs-grid">
-
-            <!-- Foundations of Behavioral Science (Columbia) -->
             <div class="cert-card">
                 <div class="cert-icon"><i class="fas fa-brain"></i></div>
                 <div class="cert-title">Foundations of Behavioral Science</div>
-                <div class="cert-org">Université Columbia+(USA)</div>
-                <div class="cert-date">Juin 2025</div>
-                <div class="cert-skills">
-                    <span class="skill-tag">psychologie</span><span class="skill-tag">analyse comportementale</span>
-                </div>
-                <a href="certificats/5hv0h48m_1749501583183.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> voir le PDF</a>
+                <div class="cert-org">Columbia University (USA)</div>
+                <div class="cert-date">Juin 2025 · Mention Excellence</div>
+                <div class="cert-skills"><span class="skill-tag">psychologie</span><span class="skill-tag">analyse</span></div>
+                <a href="certificats/5hv0h48m_1749501583183.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> Explorer PDF</a>
             </div>
-
-            <!-- Google Cybersecurity -->
             <div class="cert-card">
                 <div class="cert-icon"><i class="fab fa-google"></i></div>
                 <div class="cert-title">Google Cybersecurity</div>
                 <div class="cert-org">Coursera · Google</div>
-                <div class="cert-date">Juin 2025 · 9 cours</div>
-                <div class="cert-skills">
-                    <span class="skill-tag">Linux</span><span class="skill-tag">SQL</span><span class="skill-tag">SIEM</span><span class="skill-tag">Python</span><span class="skill-tag">IDS</span>
-                </div>
-                <a href="certificats/Google%20Cybersecurity.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> voir le PDF</a>
+                <div class="cert-date">Juin 2025 · 9 cours spécialisés</div>
+                <div class="cert-skills"><span class="skill-tag">Linux</span><span class="skill-tag">SIEM</span><span class="skill-tag">Python</span></div>
+                <a href="certificats/Google%20Cybersecurity.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> Explorer PDF</a>
             </div>
-            <!-- Penetration Testing Cybrary -->
             <div class="cert-card">
                 <div class="cert-icon"><i class="fas fa-bug"></i></div>
                 <div class="cert-title">Penetration Testing Professional</div>
                 <div class="cert-org">Cybrary</div>
-                <div class="cert-date">Fév 2025 · 12h15</div>
-                <div class="cert-skills">
-                    <span class="skill-tag">pentest</span><span class="skill-tag">metasploit</span><span class="skill-tag">scanning</span>
-                </div>
-                <a href="certificats/CertificateOfCompletion_Penetration%20Testing%20Professional%20Certificate%20by%20Cybrary.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> voir le PDF</a>
+                <div class="cert-date">Fév 2025 · 12h de pratique</div>
+                <div class="cert-skills"><span class="skill-tag">pentest</span><span class="skill-tag">metasploit</span></div>
+                <a href="certificats/CertificateOfCompletion_Penetration%20Testing%20Professional%20Certificate%20by%20Cybrary.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> Explorer PDF</a>
             </div>
-            
-            <!-- Learning AI Through Visualization -->
             <div class="cert-card">
                 <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
                 <div class="cert-title">Learning AI Through Visualization</div>
-                <div class="cert-org">Université Columbia+(USA)</div>
-                <div class="cert-date">Juin 2025</div>
-                <div class="cert-skills">
-                    <span class="skill-tag">IA</span><span class="skill-tag">data viz</span><span class="skill-tag">machine learning</span>
-                </div>
-                <a href="certificats/Learning%20AI%20Through%20Visualization.pdf.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> voir le PDF</a>
+                <div class="cert-org">Columbia+ (USA)</div>
+                <div class="cert-date">Juin 2025 · Projet innovant</div>
+                <div class="cert-skills"><span class="skill-tag">IA</span><span class="skill-tag">data viz</span></div>
+                <a href="certificats/Learning%20AI%20Through%20Visualization.pdf.pdf" class="cert-download" target="_blank"><i class="fas fa-file-pdf"></i> Explorer PDF</a>
             </div>
         </div>
-       
+        <div class="see-all-certificates">
+            <a href="Certificats.html" class="btn-see-all">
+                <i class="fas fa-certificate"></i> Voir tous les certificats
+            </a>
+        </div>
     </section>
 
-    <!-- ===== PROJETS RÉCENTS ===== -->
+    <!-- ===== PROJETS ===== -->
     <section id="projets">
-        <h2 class="section-title"># projets récents</h2>
+        <h2 class="section-title"># projets réalisés · esprit coopératif</h2>
         <div class="projects-grid">
-            <!-- Projet 1 : GbStream -->
             <div class="project-card">
                 <div class="project-icon"><i class="fas fa-music"></i></div>
                 <h3>GbStream App</h3>
-                <p>Création de l'application GbStream pour l'entreprise GB Tech. Plateforme de streaming musical avec recommandations personnalisées.</p>
-                <div class="expertise-tags">
-                    <span class="tag">Flutter</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">API REST</span>
-                </div>
+                <p>Application de streaming musical avec recommandations IA. Collaboration étroite avec GB Tech et équipe produit.</p>
+                <div class="expertise-tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Node.js</span></div>
             </div>
-            <!-- Projet 2 : 3 sites web PHP/JS -->
             <div class="project-card">
                 <div class="project-icon"><i class="fas fa-globe"></i></div>
                 <h3>3 sites web dynamiques</h3>
-                <p>Déploiement complet de trois sites vitrine et e-commerce en PHP et JavaScript (stack LAMP).</p>
-                <div class="expertise-tags">
-                    <span class="tag">PHP 8</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Bootstrap</span>
-                    <span class="tag">Apache</span>
-                </div>
+                <p>Développement full-stack PHP/JS, optimisation SEO, travail en équipe agile.</p>
+                <div class="expertise-tags"><span class="tag">PHP 8</span><span class="tag">MySQL</span><span class="tag">JS</span><span class="tag">Bootstrap</span></div>
             </div>
-            <!-- Projet 3 : Réseau complet entreprise -->
             <div class="project-card">
                 <div class="project-icon"><i class="fas fa-network-wired"></i></div>
                 <h3>Infrastructure réseau complète</h3>
-                <p>Déploiement d'un réseau d'entreprise avec SSH, Samba, Windows Server, switchs, routeurs, Red Hat et sites locaux.</p>
-                <div class="expertise-tags">
-                    <span class="tag">SSH</span>
-                    <span class="tag">Samba</span>
-                    <span class="tag">Windows Server</span>
-                    <span class="tag">Red Hat</span>
-                    <span class="tag">Cisco</span>
-                    <span class="tag">VLAN</span>
-                </div>
+                <p>Déploiement d'un réseau sécurisé (SSH, Samba, VLANs) pour un environnement collaboratif.</p>
+                <div class="expertise-tags"><span class="tag">Cisco</span><span class="tag">Red Hat</span><span class="tag">Windows Server</span></div>
             </div>
+        </div>
+        <div class="see-all-certificates">
+            <a href="projets.html" class="btn-see-all">
+                <i class="fas fa-cubes"></i> Voir tous Les Projets
+            </a>
         </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
     <section id="contact">
-        <h2 class="section-title"># contact & canaux</h2>
+        <h2 class="section-title"># contact & coopération</h2>
         <div class="contact-section">
             <div class="contact-grid">
-                <!-- emails -->
                 <div class="contact-card">
                     <i class="fas fa-envelope"></i>
-                    <div class="contact-type">e-mail (pro)</div>
+                    <div class="contact-type">e-mail (pro & étudiant)</div>
                     <a href="mailto:enilsonetienne04@gmail.com" class="contact-value">enilsonetienne04@gmail.com</a>
-                    <a href="mailto:enilsonetienne04@hotmail.com" class="contact-value">enilsonetienne04@hotmail.com</a>
+                    <a href="mailto:enilsonetienne04@gmail.com" class="contact-value">enilsonetienne04@hotmail.com</a>
                     <a href="mailto:di-enilson.etienne@student.ueh.edu.ht" class="contact-value">di-enilson.etienne@student.ueh.edu.ht</a>
                 </div>
-                <!-- WhatsApp & téléphone -->
                 <div class="contact-card">
                     <i class="fab fa-whatsapp"></i>
-                    <div class="contact-type">whatsapp / mobile</div>
+                    <div class="contact-type">whatsapp / direct</div>
                     <div class="contact-value">(509) 4268-2839</div>
+                    <div class="contact-type" style="margin-top: 10px;">toujours disponible pour échanger</div>
                 </div>
-                <!-- réseaux sociaux -->
                 <div class="contact-card">
                     <i class="fas fa-share-alt"></i>
-                    <div class="contact-type">social / dev</div>
-                    <a href="https://www.facebook.com/joachim.gary.56/" class="contact-value" style="font-size: 1rem;"><i class="fab fa-facebook"></i> facebook</a>
-                    <a href="https://www.linkedin.com/in/di-enilson-etienne/" class="contact-value" style="font-size: 1rem;"><i class="fab fa-linkedin"></i> linkedin</a>
-                    <a href="https://t.me/enilsonet" class="contact-value" style="font-size: 1rem;"><i class="fab fa-telegram"></i> Telegram</a>
+                    <div class="contact-type">réseaux & dev community</div>
+                    <a href="https://www.linkedin.com/in/di-enilson-etienne/" class="contact-value"><i class="fab fa-linkedin"></i> Linkedin</a>
+                    <a href="https://t.me/enilsonet" class="contact-value"><i class="fab fa-telegram"></i> Telegram</a>
+                     <a href="https://github.com/ledidi04" target="_blank"><i class="fab fa-github"></i> Github</a>
+                    <a href="https://www.facebook.com/joachim.gary.56/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
                 </div>
             </div>
-            <!-- PGP rappel -->
-            <div style="margin-top: 2rem; font-family: 'JetBrains Mono', monospace; background:#00000030; padding: 0.8rem; border-radius: 30px; text-align: center;">
-                <i class="fas fa-key" style="color:#4ade80;"></i> 7BA1 7359 6807 43A3 C297 98F2 6C5E 7561 3D3D 55DC
-                <span style="color:#4ade80;">|</span> disponible sur les serveurs
+            <div style="margin-top: 1.8rem; font-family: 'JetBrains Mono', monospace; background:#eef4ff; padding: 0.8rem; border-radius: 40px; text-align: center; color:#0a4c8a;">
+                <i class="fas fa-key" style="color:#0a5cff;"></i> PGP: 7BA1 7359 6807 43A3 C297 98F2 6C5E 7561 3D3D 55DC
+                <span style="color:#0a5cff;">|</span> Coopération & intégrité
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER AMÉLIORÉ ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-content">
             <div class="logo" style="font-size: 1.5rem;">Enilson Etienne</div>
             <div class="footer-links">
                 <a href="#accueil">Accueil</a>
-                <a href="#expertise">Expertise</a>
-                <a href="#certificats">Certificats</a>
-                <a href="#projets">Projets</a>
-                <a href="#contact">Contact</a>
+                <a href="expertise.html">Expertise</a>
+                <a href="certificats.html">Certificats</a>
+                <a href="projets.html">Projets</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div>
-                <a href="cv/CV Enilson.pdf" download style="color: #4ade80; text-decoration: none; font-family: 'JetBrains Mono', monospace;">
-                    <i class="fas fa-file-pdf"></i> CV
+                <a href="cv/CV Enilson.pdf" download style="color: #0a5cff; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-weight: 600;">
+                    <i class="fas fa-file-pdf"></i> CV complet
                 </a>
             </div>
         </div>
         <div class="footer-copyright">
-            <i class="fas fa-copyright"></i> 2026 Enilson Etienne · Tous droits réservés · 
-            <i class="fas fa-shield-halved" style="color: #4ade80;"></i> Sécurité & Réseaux
+            <i class="fas fa-copyright"></i> 2026 Enilson Etienne · brillant, travailleur, prêt à coopérer · 
+            <i class="fas fa-handshake" style="color:#0a5cff;"></i>  #EspritD'équipe
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Menu Hamburger
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+        }
+
+        menuToggle.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
